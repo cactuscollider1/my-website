@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запоминание паронимов</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Выберите буквы</h1>
+    <form id="letterForm">
+        <!-- Чекбоксы для выбора букв -->
+        <label><input type="checkbox" name="letter" value="А"> А</label>
+        <label><input type="checkbox" name="letter" value="Б"> Б</label>
+        <label><input type="checkbox" name="letter" value="В"> В</label>
+        <label><input type="checkbox" name="letter" value="Г"> Г</label>
+        <label><input type="checkbox" name="letter" value="Д"> Д</label>
+        <label><input type="checkbox" name="letter" value="Е"> Е</label>
+        <label><input type="checkbox" name="letter" value="Ж"> Ж</label>
+        <label><input type="checkbox" name="letter" value="З"> З</label>
+        <label><input type="checkbox" name="letter" value="И"> И</label>
+        <label><input type="checkbox" name="letter" value="К"> К</label>
+        <label><input type="checkbox" name="letter" value="Л"> Л</label>
+        <label><input type="checkbox" name="letter" value="М"> М</label>
+        <label><input type="checkbox" name="letter" value="Н"> Н</label>
+        <label><input type="checkbox" name="letter" value="О"> О</label>
+        <label><input type="checkbox" name="letter" value="П"> П</label>
+        <label><input type="checkbox" name="letter" value="Р"> Р</label>
+        <label><input type="checkbox" name="letter" value="С"> С</label>
+        <label><input type="checkbox" name="letter" value="Т"> Т</label>
+        <label><input type="checkbox" name="letter" value="У"> У</label>
+        <label><input type="checkbox" name="letter" value="Х"> Х</label>
+        <label><input type="checkbox" name="letter" value="Ц"> Ц</label>
+        <label><input type="checkbox" name="letter" value="Ч"> Ч</label>
+        <label><input type="checkbox" name="letter" value="Э"> Э</label>
+        <label><input type="checkbox" name="letter" value="Я"> Я</label>
+        <br><br>
+        <button type="button" onclick="startGame()">Начать игру</button>
+    </form>
+
+    <script>
+        // Функция для перехода на страницу игры
+        function startGame() {
+            const selectedLetters = [];
+            const checkboxes = document.querySelectorAll('input[name="letter"]:checked');
+
+            checkboxes.forEach(checkbox => {
+                selectedLetters.push(checkbox.value); // Добавляем выбранные буквы в массив
+            });
+
+            if (selectedLetters.length === 0) {
+                alert("Пожалуйста, выберите хотя бы одну букву!");
+                return;
+            }
+
+            localStorage.setItem("selectedLetters", JSON.stringify(selectedLetters)); // Сохраняем выбранные буквы
+            window.location.href = "game.html"; // Переходим на страницу игры
+        }
+    </script>
+</body>
+</html>
